@@ -117,6 +117,22 @@ fig.tight_layout()
 plt.show()
 plt.close(fig)
 
+#Plot the spectral envelope of the H1 strain
+import librosa
+def plotSpecEnvelope(wav, samplefreq):
+	"""
+	The onset envelope, oenv, determines the start points for patterns.
+	"""
+	mel = librosa.feature.melspectrogram(y=wav, sr=samplefreq, n_mels=128, fmax=30000)
+	oenv = librosa.onset.onset_strength(y=wav, sr=samplefreq, S=mel)
+	plt.plot(oenv, label='Onset strength')
+	plt.title('Onset Strength Over Time')
+	plt.xlabel('Time')
+	plt.ylabel('Onset Strength')
+	plt.show()
+	return oenv
+plotSpecEnvelope(hstrain, samplefreq)
+
 #Plot periodograms for each strain and the template
 h1freq, h1power_density = signal.periodogram(hstrain, fs=samplefreq)
 l1freq, l1power_density = signal.periodogram(lstrain, fs=samplefreq)
