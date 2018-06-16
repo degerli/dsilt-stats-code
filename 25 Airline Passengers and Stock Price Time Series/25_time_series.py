@@ -14,7 +14,7 @@ from statsmodels.tsa.stattools import adfuller
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.stats.diagnostic import acorr_ljungbox
 
-d = pd.read_csv('AirPassengers.csv')
+d = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/25 Airline Passengers and Stock Price Time Series/AirPassengers.csv')
 
 #Fix the dates
 months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -55,7 +55,7 @@ print('Augmented Dickey-Fuller Test Results',
 #If the above statement were not true, it would be an additive relationship (trend+season+random)
 
 #Smooth by using a centered moving average (data is monthly, so 12 month trend seems appropriate)
-trend = pd.rolling_mean(dts, window=12, center=True)
+trend = dts.rolling(12).mean()
 plt.plot(dts)
 plt.plot(trend)
 plt.show()
@@ -233,10 +233,12 @@ plt.show()
 import datetime as dt
 import numpy as np
 import pandas as pd
+pd.core.common.is_list_like = pd.api.types.is_list_like  #Fixes import error for datareader
 import pandas_datareader.data as web
 import matplotlib.pyplot as plt
 import statsmodels.tsa.api as smt
 from arch import arch_model
+from statsmodels.stats.diagnostic import acorr_ljungbox
 
 
 start_dt = dt.datetime(2012, 1, 1)
@@ -417,6 +419,7 @@ plt.show()
 import datetime as dt
 import numpy as np
 import pandas as pd
+pd.core.common.is_list_like = pd.api.types.is_list_like  #Fixes import error for datareader
 import pandas_datareader.data as web
 import matplotlib.pyplot as plt
 import ruptures as rpt
@@ -432,7 +435,7 @@ aaplpts.index = aapl.index.levels[1]
 plt.plot(aaplpts)
 plt.show()
 
-cp_model = rpt.Pelt(model='rbf', min_size=2).fit(aaplpts)
+cp_model = rpt.Pelt(model='rbf', min_size=2).fit(aaplpts.values)
 cp_preds = cp_model.predict(pen=3)  #Smaller penalty -> more change points
 cp_preds = cp_preds[:-1]  #Drop the final change point, as it is at the end of the series
 

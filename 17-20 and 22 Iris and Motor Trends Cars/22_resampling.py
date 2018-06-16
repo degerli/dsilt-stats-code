@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 
-d = pd.read_csv('iris.csv')
+d = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/17-20 and 22 Iris and Motor Trends Cars/iris.csv')
 le = LabelEncoder()
 d['Species'] = le.fit_transform(d['Species'])
 d = d.values

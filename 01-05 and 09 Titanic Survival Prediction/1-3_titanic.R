@@ -5,7 +5,7 @@
 #---------------------------Chapter 1 - Experimental Design---------------------------------------#
 #-------------------------------------------------------------------------------------------------#
 
-setwd("C:/Users/Nick/Documents/Word Documents/Data Science Books/DSILT Stats Code/01-05 and 09 Titanic Survival Prediction")
+setwd("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction")
 
 train <- read.csv("train.csv", header=T)
 test <- read.csv("test.csv", header=T)
@@ -23,7 +23,7 @@ str(train)
 #---------------------------Chapter 2 - Descriptive Statistics------------------------------------#
 #-------------------------------------------------------------------------------------------------#
 
-setwd("C:/Users/Nick/Documents/Word Documents/Data Science Books/DSILT Stats Code/01-07 and 09 Titanic Survival Prediction")
+setwd("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction")
 
 train <- read.csv("train.csv", header=T)
 test <- read.csv("test.csv", header=T)
@@ -103,7 +103,7 @@ CrossTable(train$Pclass, train$Embarked, prop.chisq=F)
 #-----------------------------Chapter 3 - Statistical Modeling------------------------------------#
 #-------------------------------------------------------------------------------------------------#
 
-setwd("C:/Users/Nick/Documents/Word Documents/Data Science Books/DSILT Stats Code/01-07 and 09 Titanic Survival Prediction")
+setwd("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction")
 
 train <- read.csv("train.csv", header=T)
 test <- read.csv("test.csv", header=T)

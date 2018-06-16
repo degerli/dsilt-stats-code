@@ -1,6 +1,6 @@
 #R code for chapter 16 of DSILT: Statistics
 
-setwd("C:/Users/Nick/Documents/Word Documents/Data Science Books/DSILT Stats Code/12-16 Titanic and Adult Salaries")
+setwd("/home/dsilt/Desktop/dsilt-stats-code/12-16 Titanic and Adult Salaries")
 
 d <- read.table("adult.data", header=F, sep=",")
 colnames(d) <- c('age', 'workclass', 'fnlwgt', 'education', 'education_nbr', 

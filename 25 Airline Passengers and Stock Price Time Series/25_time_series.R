@@ -1,6 +1,6 @@
 #R code for chapter 25 of DSILT: Statistics
 
-setwd("C:/Users/Nick/Documents/Word Documents/Data Science Books/DSILT Stats Code/25 Airline Passengers and Stock Price Time Series")
+setwd("/home/dsilt/Desktop/dsilt-stats-code/25 Airline Passengers and Stock Price Time Series")
 
 library(tseries)
 library(forecast)

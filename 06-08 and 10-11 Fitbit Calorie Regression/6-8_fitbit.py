@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from statsmodels.graphics.tsaplots import plot_acf
 
-alldata = pd.read_csv("fitbit.csv", sep=",")
+alldata = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/06-08 and 10-11 Fitbit Calorie Regression/fitbit.csv", sep=",")
 alldata.columns = alldata.columns.to_series().str.replace('\s+', '_')
 
 print(alldata.info())
@@ -58,9 +58,9 @@ naRow(alldata)
 MICE function, then jump down to the next comment that looks like this and ignore all the code in between.
 '''
 
-"""
 #Use multiple imputation to fill in the missing values for hours slept and times awake
 from fancyimpute import MICE
+import random
 
 def estimate_by_mice(df):
     df_estimated_variables = df.copy()
@@ -71,7 +71,7 @@ def estimate_by_mice(df):
     return df_estimated_variables
 
 impdata = estimate_by_mice(alldata.drop(['Date'], axis=1))
-#alldata = pd.concat([alldata, impdata], axis=1)
+#alldata = pd.concat([alldata[['Date']], impdata], axis=1)
 
 #Plot distributions of original data and imputed to see if imputation is on track
 fig = plt.figure()
@@ -94,7 +94,7 @@ pltb.set_title('Histogram of Times Awake After Imputation')
 fig.tight_layout()
 plt.show()
 plt.close(fig)
-"""
+
 #Boxplots for numeric variables to check for outliers
 numeric_cols = [col for col in alldata.columns if alldata[col].dtype == 'float64']
 for col in numeric_cols:
@@ -174,8 +174,8 @@ test = pd.DataFrame(data=test, columns=list(nodate.drop(['Calories'], axis=1).co
 MICE function, then uncomment the 2 lines below to read in the data.  Note that R used Friday as the
 baseline dummy.
 '''
-train = pd.read_csv('train.csv')
-test = pd.read_csv('test.csv')
+#train = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/06-08 and 10-11 Fitbit Calorie Regression/train.csv')
+#test = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/06-08 and 10-11 Fitbit Calorie Regression/test.csv')
 
 x_train = train.drop(['Calories'], axis=1).values
 y_train = train['Calories'].values
@@ -283,23 +283,30 @@ rmse_baseline = np.sqrt(np.mean((y_test-baseline_model)**2))
 
 import numpy as np
 import pandas as pd
+from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import cross_val_score, KFold
 from sklearn.linear_model import SGDRegressor
 from hyperopt import hp, fmin, tpe, rand, Trials, STATUS_OK
 
-train = pd.read_csv('train.csv')
-test = pd.read_csv('test.csv')
+#Ignore all deprecation warnings from hyperopt
+import warnings
+warnings.filterwarnings("ignore")
 
-x_train = train.drop(['Calories'], axis=1).values
-y_train = train['Calories'].values
-x_test = test.drop(['Calories'], axis=1).values
-y_test = test['Calories'].values
+train = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/06-08 and 10-11 Fitbit Calorie Regression/train.csv')
+test = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/06-08 and 10-11 Fitbit Calorie Regression/test.csv')
+
 train.columns = ['Steps', 'Calories', 'Active_Minutes', 'Floors_Climbed', 'Hours_Slept',
        'Times_Awake', 'Day_0', 'Day_5', 'Day_6',
        'Day_3', 'Day_1', 'Day_2']
 test.columns = ['Steps', 'Calories', 'Active_Minutes', 'Floors_Climbed', 'Hours_Slept',
        'Times_Awake', 'Day_0', 'Day_5', 'Day_6',
        'Day_3', 'Day_1', 'Day_2']
+
+#Convert to numpy arrays and standardize all values, otherwise SGD error will be large
+x_train = StandardScaler().fit_transform(train.drop(['Calories'], axis=1).values)
+y_train = StandardScaler().fit_transform(train['Calories'].values.reshape(-1,1))
+x_test = StandardScaler().fit_transform(test.drop(['Calories'], axis=1).values)
+y_test = StandardScaler().fit_transform(test['Calories'].values.reshape(-1,1))
 
 #Set up k-fold cross validation
 kfold = KFold(n_splits=10, shuffle=True, random_state=14)
@@ -365,7 +372,7 @@ def sgd_model_opt(opt_type='bayesian'):
                                   epsilon=best_params['epsilon'],
                                   learning_rate=best_params['learning_rate'])
         best_results = cross_val_score(best_model, x_train, y_train, cv=kfold, scoring='neg_mean_squared_error')
-        return best_mode, best_results
+        return best_model, best_results
     elif (opt_type=='random'):
         best_params = fmin(obj_func, search_space, algo=rand.suggest, max_evals=100, trials=trials)
         
@@ -401,7 +408,7 @@ def sgd_model_opt(opt_type='bayesian'):
                                   l1_ratio=best_params['l1_ratio'],
                                   epsilon=best_params['epsilon'],
                                   learning_rate=best_params['learning_rate'])
-        best_results = cross_validation.cross_val_score(best_model, x_std, y, cv=kfold, scoring='neg_mean_squared_error')
+        best_results = cross_val_score(best_model, x_train, y_train, cv=kfold, scoring='neg_mean_squared_error')
         return best_model, best_results
     else:
         print('Invalid opt_type')
@@ -411,13 +418,3 @@ sgd_best_model, sgd_best_results = sgd_model_opt(opt_type='bayesian')
 
 print('Stochastic Gradient Descent Cross Validated MSE:', abs(sgd_results.mean()))
 print('Optimized Stochastic Gradient Descent Cross Validated MSE:', abs(sgd_best_results.mean()))
-
-
-
-
-
-
-
-
-
-

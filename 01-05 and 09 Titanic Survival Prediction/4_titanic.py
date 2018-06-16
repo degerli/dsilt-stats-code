@@ -8,8 +8,8 @@ from outliers import smirnov_grubbs as grubbs
 import seaborn as sns
 from sklearn.preprocessing import LabelEncoder
 
-train = pd.read_csv("train.csv", sep=",")
-test = pd.read_csv("test.csv", sep=",")
+train = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction/train.csv", sep=",")
+test = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction/test.csv", sep=",")
 
 print(train.info())
 

@@ -16,7 +16,7 @@ from scipy import signal
 '''
 
 #Read the file for the first detector to extract strain data and create a time array
-fileName = 'H-H1_LOSC_4_V1-1126259446-32.hdf5'
+fileName = '/home/dsilt/Desktop/dsilt-stats-code/26 LIGO Signal Processing/H-H1_LOSC_4_V1-1126259446-32.hdf5'
 dataFile = h5py.File(fileName, 'r')
 print(list(dataFile.keys()))
 
@@ -45,7 +45,7 @@ htime = np.arange(gpsStart, gpsEnd, htime_interval)
 dataFile.close()
 
 #Read the file for the second detector to extract strain data and create a time array
-fileName = 'L-L1_LOSC_4_V1-1126259446-32.hdf5'
+fileName = '/home/dsilt/Desktop/dsilt-stats-code/26 LIGO Signal Processing/L-L1_LOSC_4_V1-1126259446-32.hdf5'
 dataFile = h5py.File(fileName, 'r')
 lstrain = dataFile['strain']['Strain'].value
 ltime_interval = dataFile['strain']['Strain'].attrs['Xspacing']
@@ -53,7 +53,7 @@ ltime = np.arange(gpsStart, gpsEnd, ltime_interval)
 dataFile.close()
 
 #Read the template to serve as a reference
-reftime, ref_H1 = np.genfromtxt('GW150914_4_NR_waveform_template.txt').transpose()
+reftime, ref_H1 = np.genfromtxt('/home/dsilt/Desktop/dsilt-stats-code/26 LIGO Signal Processing/GW150914_4_NR_waveform_template.txt').transpose()
 
 #Plot the detector strains and the template for comparison
 fig = plt.figure()

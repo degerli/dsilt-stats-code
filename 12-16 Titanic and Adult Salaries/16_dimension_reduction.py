@@ -13,7 +13,7 @@ seed = 14
 np.random.seed(seed)
 
 #Load adult dataset
-d = pd.read_csv('C:/Users/Nick/Documents/Word Documents/Data Science Books/DSILT Stats Code/12-16 Titanic and Adult Salaries/adult.data',
+d = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/12-16 Titanic and Adult Salaries/adult.data',
                 names=['age', 'workclass', 'fnlwgt', 'education', 'education_nbr', 'marital_status', 'occupation', 'relationship', 'race',
                        'sex', 'capital_gain', 'capital_loss', 'hours_per_week', 'native_country', 'salary_bin'])
 print(d.info())
@@ -86,7 +86,7 @@ plt.figure(figsize=(10, 5))
 plt.xlabel('Latent Variable 1 (explains most variance)')
 plt.ylabel('Latent Variable 2 (explains 2nd most variance)')
 plt.title('PCA 2-Dimension Plot with Observation Class')
-plt.scatter(pca_dim[:, 0], pca_dim[:, 1], c=yn_train)
+plt.scatter(pca_dim[:, 0], pca_dim[:, 1], c=yn_train.ravel())
 plt.colorbar()
 plt.show()
 
@@ -130,7 +130,7 @@ plt.figure(figsize=(10, 5))
 plt.xlabel('Latent Variable 1 (explains most variance)')
 plt.ylabel('Latent Variable 2 (explains 2nd most variance)')
 plt.title('Factor Analysis 2-Dimension Plot with Observation Class')
-plt.scatter(fact_dim[:, 0], fact_dim[:, 1], c=yn_train)
+plt.scatter(fact_dim[:, 0], fact_dim[:, 1], c=yn_train.ravel())
 plt.colorbar()
 plt.show()
 
@@ -168,7 +168,7 @@ print('Factor Analysis Number of Extracted Features:', fact_features.shape[1])
 #Run LDA for dimension reduction, ignoring the multicollinearity and keeping n components < the number of original features
 #Note if n_components=None, then all of them are kept
 lda = LinearDiscriminantAnalysis(n_components=None, solver='svd')
-lda_dim_reduced = lda.fit_transform(x_nd_train, y_nd_train)
+lda_dim_reduced = lda.fit_transform(x_nd_train, y_nd_train.ravel())
 
 #Explore LDA results from the model that was just built
 print('Priors:', lda.priors_)       #Class prior probabilities

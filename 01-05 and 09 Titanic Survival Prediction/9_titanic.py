@@ -15,8 +15,8 @@ from statsmodels.stats.stattools import durbin_watson
 import sys
 sys.__stdout__ = sys.stdout
 
-train = pd.read_csv("train_clean.csv", sep=",")
-test = pd.read_csv("test_clean.csv", sep=",")
+train = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction/train_clean.csv", sep=",")
+test = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction/test_clean.csv", sep=",")
 train['Set'] = 'train'
 test['Set'] = 'test'
 alldata = pd.concat([train.drop(['Survived'], axis=1), test], ignore_index=True)
@@ -87,8 +87,8 @@ del test_clean_feats['Set']
 #--------------------------------------Logistic Regression----------------------------------------#
 #-------------------------------------------------------------------------------------------------#
 
-train = pd.read_csv("train_clean_feats.csv")
-test = pd.read_csv("test_clean_feats.csv")
+train = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction/train_clean_feats.csv")
+test = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction/test_clean_feats.csv")
 del train_clean_feats, test_clean_feats, age_dist_child, age_dist_adult
 
 ######

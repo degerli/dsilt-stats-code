@@ -1,6 +1,6 @@
 #R code for chapter 21 of DSILT: Statistics
 
-setwd("C:/Users/Nick/Documents/Word Documents/Data Science Books/DSILT Stats Code/21 Exam Scores Multilevel Modeling")
+setwd("/home/dsilt/Desktop/dsilt-stats-code/21 Exam Scores Multilevel Modeling")
 
 library(lme4)
 

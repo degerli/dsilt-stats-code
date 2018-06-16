@@ -95,7 +95,7 @@ Example 1: Trump Speech Generator
 import numpy as np
 
 #Trump speech generator
-d = open('trump_speeches.txt', encoding='utf8').read()
+d = open('/home/dsilt/Desktop/dsilt-stats-code/23-24 Bayesian Statistics and Markov Models/trump_speeches.txt', encoding='utf8').read()
 corpus = d.split()
 #Function to generate all pairs of words
 #Keys are all unique words and all of the words that appear after the key are stored as a list of values
@@ -181,6 +181,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+#Ignore all deprecation warnings from theano
+import warnings
+warnings.filterwarnings("ignore")
+
 def glm_mcmc(df, formula, nbr_iters, likelihood=None, mcmc_sampler=None, target_accept=0.8, tune=500):
     '''
     This function is a wrapper for GLM Bayesian regression, using MCMC.  The 
@@ -241,7 +245,7 @@ def patsy_formula(df, dependent_var, *excluded_cols):
     return dependent_var + ' ~ ' + ' + '.join(df_columns)
 
 #GLM of mpg on disp
-d = pd.read_csv('mtcars.csv')
+d = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/23-24 Bayesian Statistics and Markov Models/mtcars.csv')
 formula = patsy_formula(d, 'mpg')
 
 #Bayesian regression
@@ -412,7 +416,7 @@ from sklearn.naive_bayes import GaussianNB
 import pandas as pd
 from sklearn.metrics import confusion_matrix
 
-d = pd.read_csv('iris.csv')
+d = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/23-24 Bayesian Statistics and Markov Models/iris.csv')
 
 #Train model with default hyperparameters
 nb_model = GaussianNB()

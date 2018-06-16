@@ -55,7 +55,7 @@ train_control <- trainControl(method="cv", number=10, savePredictions=TRUE)
 class_tree <- train(Species~., data=d, trControl=train_control, method="rpart")
 
 #k-fold cross validation with hyperparameter tuning
-hyperparam_grid <- expand.grid(.fL=c(0), .usekernel=c(FALSE))
+hyperparam_grid <- expand.grid(.fL=c(0), .usekernel=c(FALSE), .adjust=0)
 #Train & tune
 nb_class <- train(Species~., data=d, trControl=train_control, method="nb", tuneGrid=hyperparam_grid)
 nb_class

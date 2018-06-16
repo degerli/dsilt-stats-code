@@ -110,7 +110,7 @@ class flight(object):
         self.price = int(price)
 
 flights = []
-with open('flight_schedule.txt') as file:
+with open('/home/dsilt/Desktop/dsilt-stats-code/06-08 and 10-11 Fitbit Calorie Regression/flight_schedule.txt') as file:
     for line in file:
         origin, dest, depart, arrive, price = line.strip().split(',')
         flights.append(flight(origin, dest, depart, arrive, price))

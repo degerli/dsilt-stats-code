@@ -11,7 +11,7 @@ seed = 14
 np.random.seed(seed)
 
 #Load Iris data and specify dependent variable
-alldata = pd.read_csv('C:/Users/Nick/Documents/Word Documents/Data Science Books/DSILT Stats Code/17-20 and 22 Iris and Motor Trends Cars/iris.csv')
+alldata = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/17-20 and 22 Iris and Motor Trends Cars/iris.csv')
 print(alldata.info())
 print(alldata.head())
 

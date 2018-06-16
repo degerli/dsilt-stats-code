@@ -1,6 +1,6 @@
 #R code for chapters 10 and 11 of DSILT: Statistics
 
-setwd("C:/Users/Nick/Documents/Word Documents/Data Science Books/DSILT Stats Code/06-08 and 10-11 Fitbit Calorie Regression")
+setwd("/home/dsilt/Desktop/dsilt-stats-code/06-08 and 10-11 Fitbit Calorie Regression")
 
 train <- read.csv("train.csv", header=T)
 test <- read.csv("test.csv", header=T)

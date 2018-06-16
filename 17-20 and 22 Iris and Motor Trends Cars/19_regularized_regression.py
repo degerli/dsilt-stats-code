@@ -7,7 +7,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import Ridge, Lasso, ElasticNet
 import matplotlib.pyplot as plt
 
-d = pd.read_csv('mtcars.csv')
+d = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/17-20 and 22 Iris and Motor Trends Cars/mtcars.csv')
 d.info()
 
 def get_lr_output(lr, x, y):

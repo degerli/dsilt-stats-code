@@ -83,6 +83,7 @@ Learning problem
 import datetime as dt
 import numpy as np
 import pandas as pd
+pd.core.common.is_list_like = pd.api.types.is_list_like  #Fixes import error for datareader
 import pandas_datareader.data as web
 from matplotlib import cm, pyplot as plt
 from matplotlib.dates import YearLocator, MonthLocator
@@ -94,7 +95,7 @@ end_dt = dt.datetime(2016, 1, 1)
 
 #d = web.DataReader('SPY', 'morningstar', start_dt, end_dt)
 #d.to_csv('spy.csv')  #Write to csv so future runs don't need to call the API
-d = pd.read_csv('spy.csv')
+d = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/23-24 Bayesian Statistics and Markov Models/spy.csv')
 d = d[['Date', 'Close']]
 date_index = pd.to_datetime(d['Date'])
 dts = pd.Series(d['Close'])

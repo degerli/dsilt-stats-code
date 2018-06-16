@@ -18,8 +18,8 @@ import statsmodels.formula.api as smf
 import sys
 sys.__stdout__ = sys.stdout
 
-train = pd.read_csv('train_clean_feats.csv')
-test = pd.read_csv('test_clean_feats.csv')
+train = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/12-16 Titanic and Adult Salaries/train_clean_feats.csv')
+test = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/12-16 Titanic and Adult Salaries/test_clean_feats.csv')
 train['Set'] = 'train'
 test['Set'] = 'test'
 alldata = train.drop('Survived', axis=1).append(test, ignore_index=True)
@@ -180,7 +180,7 @@ import sys
 sys.__stdout__ = sys.stdout
 
 #Load adult dataset
-d = pd.read_csv('C:/Users/Nick/Documents/Word Documents/Data Science Books/DSILT Stats Code/12-16 Titanic and Adult Salaries/adult.data',
+d = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/12-16 Titanic and Adult Salaries/adult.data',
                 names=['age', 'workclass', 'fnlwgt', 'education', 'education_nbr', 'marital_status', 'occupation', 'relationship', 'race',
                        'sex', 'capital_gain', 'capital_loss', 'hours_per_week', 'native_country', 'salary_bin'])
 print(d.info())
@@ -233,7 +233,7 @@ import sys
 sys.__stdout__ = sys.stdout
 
 #Load adult dataset
-d = pd.read_csv('C:/Users/Nick/Documents/Word Documents/Data Science Books/DSILT Stats Code/12-16 Titanic and Adult Salaries/adult.data',
+d = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/12-16 Titanic and Adult Salaries/adult.data',
                 names=['age', 'workclass', 'fnlwgt', 'education', 'education_nbr', 'marital_status', 'occupation', 'relationship', 'race',
                        'sex', 'capital_gain', 'capital_loss', 'hours_per_week', 'native_country', 'salary_bin'])
 print(d.info())
@@ -281,7 +281,7 @@ seed = 14
 np.random.seed(seed)
 
 #Load adult dataset
-d = pd.read_csv('C:/Users/Nick/Documents/Word Documents/Data Science Books/DSILT Stats Code/12-16 Titanic and Adult Salaries/adult.data',
+d = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/12-16 Titanic and Adult Salaries/adult.data',
                 names=['age', 'workclass', 'fnlwgt', 'education', 'education_nbr', 'marital_status', 'occupation', 'relationship', 'race',
                        'sex', 'capital_gain', 'capital_loss', 'hours_per_week', 'native_country', 'salary_bin'])
 print(d.info())

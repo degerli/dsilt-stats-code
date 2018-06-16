@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from sklearn.isotonic import IsotonicRegression
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 
-d = pd.read_csv('mtcars.csv')
+d = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/17-20 and 22 Iris and Motor Trends Cars/mtcars.csv')
 d.info()
 
 def get_lr_output(lr, x, y):
@@ -256,7 +256,7 @@ for i, f in enumerate(d.drop(['mpg', 'mpg_bin'], axis=1).columns):
 reg_tree_predictions = reg_tree.predict(d.drop(['mpg', 'mpg_bin'], axis=1))
 print('MSE:', reg_tree.score(d.drop(['mpg', 'mpg_bin'], axis=1), d['mpg']))
 
-iris = pd.read_csv('iris.csv')
+iris = pd.read_csv('/home/dsilt/Desktop/dsilt-stats-code/17-20 and 22 Iris and Motor Trends Cars/iris.csv')
 iris.info()
 
 #Classification tree

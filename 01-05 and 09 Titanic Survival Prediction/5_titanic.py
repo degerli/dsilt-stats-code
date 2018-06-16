@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy.stats as stats
 
-train = pd.read_csv("train_clean.csv", sep=",")
-test = pd.read_csv("test_clean.csv", sep=",")
+train = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction/train_clean.csv", sep=",")
+test = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction/test_clean.csv", sep=",")
 train['Set'] = 'train'
 test['Set'] = 'test'
 alldata = pd.concat([train.drop(['Survived'], axis=1), test], ignore_index=True)

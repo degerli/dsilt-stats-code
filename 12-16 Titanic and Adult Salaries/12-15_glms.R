@@ -4,7 +4,7 @@
 #------------------------------------Chapter 12: GLMs---------------------------------------------#
 #-------------------------------------------------------------------------------------------------#
 
-setwd("C:/Users/Nick/Documents/Word Documents/Data Science Books/DSILT Stats Code/12-16 Titanic and Adult Salaries")
+setwd("/home/dsilt/Desktop/dsilt-stats-code/12-16 Titanic and Adult Salaries")
 
 train <- read.csv("train_clean_feats.csv", header=T)
 test <- read.csv("test_clean_feats.csv", header=T)

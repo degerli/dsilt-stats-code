@@ -7,8 +7,8 @@
 
 import pandas as pd
 
-train = pd.read_csv("train.csv", sep=",")
-test = pd.read_csv("test.csv", sep=",")
+train = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction/train.csv", sep=",")
+test = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction/test.csv", sep=",")
 
 print(train.head(n=6))
 
@@ -31,8 +31,8 @@ from scipy import stats as scistats
 import matplotlib.pyplot as plt
 import numpy as np
 
-train = pd.read_csv("train.csv", sep=",")
-test = pd.read_csv("test.csv", sep=",")
+train = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction/train.csv", sep=",")
+test = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction/test.csv", sep=",")
 
 len(train.Fare)             #Number of observations
 stats.mean(train.Fare)      #Mean
@@ -125,8 +125,8 @@ import seaborn as sns
 from statsmodels.api import qqplot
 from sklearn.preprocessing import LabelEncoder
 
-train = pd.read_csv("train.csv", sep=",")
-test = pd.read_csv("test.csv", sep=",")
+train = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction/train.csv", sep=",")
+test = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/01-05 and 09 Titanic Survival Prediction/test.csv", sep=",")
 
 #Two-tailed t-test to compare mean passenger age to mean UK population age
 #First combine the training and test sets, removing the survived column and NA values for age from the training set

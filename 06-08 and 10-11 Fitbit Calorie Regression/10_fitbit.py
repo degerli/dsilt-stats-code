@@ -10,8 +10,8 @@ import statsmodels.api as sm
 import sys
 sys.__stdout__ = sys.stdout
 
-train = pd.read_csv("train.csv")
-test = pd.read_csv("test.csv")
+train = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/06-08 and 10-11 Fitbit Calorie Regression/train.csv")
+test = pd.read_csv("/home/dsilt/Desktop/dsilt-stats-code/06-08 and 10-11 Fitbit Calorie Regression/test.csv")
 
 print(train.info())
 print(train.head())
