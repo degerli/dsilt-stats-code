@@ -71,7 +71,7 @@ def estimate_by_mice(df):
     return df_estimated_variables
 
 impdata = estimate_by_mice(alldata.drop(['Date'], axis=1))
-#alldata = pd.concat([alldata[['Date']], impdata], axis=1)
+alldata = pd.concat([alldata[['Date']], impdata], axis=1)
 
 #Plot distributions of original data and imputed to see if imputation is on track
 fig = plt.figure()
@@ -318,7 +318,7 @@ sgd_results = cross_val_score(sgd_reg, x_train, y_train, cv=kfold, scoring='neg_
 #Train model with optimized hyperparameters
 def sgd_model_opt(opt_type='bayesian'):
     
-    #Define objective functionto optimize
+    #Define objective function to optimize
     def obj_func(params):
         clf = SGDRegressor(**params)
         return {'loss': -cross_val_score(clf, x_train, y_train, cv=kfold, scoring='neg_mean_squared_error').mean(), 'status': STATUS_OK}
